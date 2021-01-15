@@ -5,7 +5,7 @@
  *
  * @example
  *
- *  foo('hello')
+ *  foo('hello') -> 'hello'
  */
 
  let foo = (n) => {
