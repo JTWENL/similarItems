@@ -11,6 +11,25 @@ db.once('open', ()=> {
 
 });
 
+/**
+ * Product document for products collection (similarItems service db)
+ *
+ * @prop {string} itemID - 25char alphanumeric string
+ * @prop {string} category - product category
+ * @prop {string} shortDescription - product description (color)
+ * @prop {number} price - number between 0-1000
+ * @prop {number} reviews - number of reviews between 0-500
+ * @prop {number} averageRating - number between 0 and 5
+ * @prop {string} thumbImageURL - url for product image
+ * @prop {object} carouselImages - main and hover properties
+ * @prop {string} main - carouselImages property, image url
+ * @prop {string} hover - carouselImages property, image url
+ * @prop {boolean} variants - boolean value represents if product has variants
+ * @prop {boolean} liked - boolean value represents if product is liked by user
+ * @prop {boolean} isSale- boolean value represents if product is on sale
+ * @prop {boolean} isFresh - boolean value represents if product is a new product
+ * @prop {string} name - product name
+ */
 
 const productSchema = new mongoose.Schema({
   itemID: {type: String, required: true},
