@@ -10,6 +10,8 @@ db.once('open', ()=> {
 
 
 });
+
+
 const productSchema = new mongoose.Schema({
   itemID: {type: String, required: true},
   category: {type: String, required: true},
@@ -18,13 +20,23 @@ const productSchema = new mongoose.Schema({
   reviews: {type: Number, required: true},
   averageRating: {type: Number, required: true},
   thumbImageURL: {type: String, required: true},
-  carouselImages: {type: [String], required: true},
+  carouselImages: {
+    main: {
+      type: String,
+      required: true
+    },
+    hover: {
+      type: String,
+      required: true
+    }
+  },
   variants: {type: Boolean, required: true},
   liked: {type: Boolean, required: true},
   isSale: {type: Boolean, required: true},
   isFresh: {type: Boolean, required: true},
   name: {type: String, required: true},
 });
+
 const Product = mongoose.model('product', productSchema)
 
 
