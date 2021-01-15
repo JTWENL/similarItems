@@ -55,8 +55,20 @@ const productSchema = new mongoose.Schema({
   isFresh: {type: Boolean, required: true},
   name: {type: String, required: true},
 });
-
 const Product = mongoose.model('product', productSchema)
+
+
+/**
+ * Describes the db query function
+ * @async querySimilar
+ * @param {string} col - represents the column name for query to search
+ * @param {string} value - represents the value for the query to match against
+ * @return {[Objects]} - an array of document objects whose properties match the desired values at the specific column
+ */
+
+let querySimilar = (col, value) => {
+
+}
 
 
 module.exports = {
