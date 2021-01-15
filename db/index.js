@@ -13,7 +13,7 @@ db.once('open', ()=> {
 
 /**
  * Product document for products collection (similarItems service db)
- *
+ * @class Products
  * @prop {string} itemID - 25char alphanumeric string
  * @prop {string} category - product category
  * @prop {string} shortDescription - product description (color)
