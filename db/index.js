@@ -66,11 +66,16 @@ const Product = mongoose.model('product', productSchema)
  * @return {[Objects]} - an array of document objects whose properties match the desired values at the specific column
  */
 
-let querySimilar = (col, value) => {
+querySimilar = (queryObj) => {
+
+  return Product.find(queryObj)
+    .then(res => {return res})
+    .catch(err => {console.log(err)});
 
 }
 
 
 module.exports = {
-  Product: Product
+  Product: Product,
+  querySimilar: querySimilar
 }
