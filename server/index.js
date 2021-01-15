@@ -14,17 +14,20 @@ app.listen(PORT, ()=> {
  * This is a description for the servers only enpoint
  * @async api Endpoint
  *
- * @param {string} category - req parameter representing the column name for the database query
- * @param {string} key - req parameter representing the value used by the db query to choose similar items
+ * @param {string} col - req parameter representing the column name for the database query
+ * @param {string} value - req parameter representing the value used by the db query to choose similar items
  *
  * @returns {[Object]} - returns an array of documents who are similar based on the given req params
  *
 */
 
 
-app.get('/similar/:category/:key', (req, res) => {
+app.get('/similar/:col/:value', (req, res) => {
   //endpoint receives strings from req params
-  //string corresponds to a key in db documents
+  let col = req.params.col;
+  let value = req.params.value;
+
+  //string corresponds to a column and value in db documents
   //make query to db
     //db query will respond with all documents where property matches given key
 });
