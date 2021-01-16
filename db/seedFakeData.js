@@ -17,7 +17,10 @@ let seedDatabase = () => {
       reviews: faker.random.number(500),
       averageRating: faker.random.number(5),
       thumbImageURL: faker.image.image(),
-      carouselImages: [faker.image.image(), faker.image.image()],
+      carouselImages: {
+        main: faker.image.image(),
+        hover: faker.image.image()
+      },
       variants: faker.random.boolean(),
       liked: faker.random.boolean(),
       isSale: faker.random.boolean(),
