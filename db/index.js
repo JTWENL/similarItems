@@ -67,11 +67,9 @@ const Product = mongoose.model('product', productSchema)
  */
 
 querySimilar = (queryObj) => {
-
   return Product.find(queryObj)
     .then(res => {return res})
     .catch(err => {console.log(err)});
-
 }
 
 
