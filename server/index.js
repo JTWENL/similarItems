@@ -22,7 +22,6 @@ app.listen(PORT, ()=> {
 
 
 app.get('/similar/:col/:value', (req, res) => {
-  console.log('here');
   let col = req.params.col;
   let value = req.params.value;
   let queryObj = {}
