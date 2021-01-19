@@ -7,8 +7,6 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', ()=> {
   console.log('connected to mongodb');
-
-
 });
 
 /**
@@ -68,8 +66,8 @@ const Product = mongoose.model('product', productSchema)
 
 let querySimilar = (queryObj) => {
   return Product.find(queryObj)
+    .catch(err => {throw(err)})
     .then(res => {return res})
-    .catch(err => {console.log(err)});
 }
 
 
