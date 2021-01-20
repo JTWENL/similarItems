@@ -10,7 +10,7 @@ class App extends React.Component {
 
     this.state = {
       sortParam: 'category',
-      mainProductInfo: {"category": 'Tools'},
+      mainProductInfo: {"isFresh": true},
       similarItems: []
     }
     this.onSortParamChange = this.onSortParamChange.bind(this);
@@ -44,9 +44,9 @@ class App extends React.Component {
         <SortForm
           sortParam={this.state.sortParam}
           onSortParamChange={this.onSortParamChange}
-          onSort={this.onSort} />
+          onSort={this.onSort} /><br></br>
         <div className="carousel">
-        <CarouselItem />
+        <CarouselItem similarItems={this.state.similarItems} />
         </div>
       </div>
     );

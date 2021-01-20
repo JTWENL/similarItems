@@ -12,6 +12,7 @@ let SortForm = (props) => {
       <select>
         <option value='category'>Category</option>
         <option value='isSale'>On Sale</option>
+        <option value='isFresh'>New</option>
         <option value='shortDescription'>By Color</option>
         <option value='liked'>Products I Liked</option>
         <option value='averageRating'>Average Rating</option>
