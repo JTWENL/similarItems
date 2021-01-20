@@ -2,7 +2,14 @@ import React from 'react';
 import CarouselItem from './CarouselItem.jsx';
 import SortForm from './SortForm.jsx';
 import {similarItemsRequest} from '../apiRequest.js';
+import styled from 'styled-components';
 
+const Carousel = styled.div`
+  background-color: lightgreen;
+  display: flex;
+  align-items: flex-end;
+  overflow: scroll;
+`
 
 class App extends React.Component {
   constructor(props){
@@ -10,7 +17,7 @@ class App extends React.Component {
 
     this.state = {
       sortParam: 'category',
-      mainProductInfo: {"isFresh": true},
+      mainProductInfo: {'category': 'Tools'},
       similarItems: []
     }
     this.onSortParamChange = this.onSortParamChange.bind(this);
@@ -45,9 +52,9 @@ class App extends React.Component {
           sortParam={this.state.sortParam}
           onSortParamChange={this.onSortParamChange}
           onSort={this.onSort} /><br></br>
-        <div className="carousel">
-        <CarouselItem similarItems={this.state.similarItems} />
-        </div>
+        <Carousel>
+          <CarouselItem similarItems={this.state.similarItems} />
+        </Carousel>
       </div>
     );
   }

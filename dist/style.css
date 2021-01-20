@@ -1,12 +1,4 @@
 body {
-  background-color: antiquewhite;
+  background-color: rgb(215, 246, 250);
 }
 
-img {
-  height: 150px;
-  width: 90px;
-}
-
-.carousel-item {
-  border: 5px solid black;
-}
