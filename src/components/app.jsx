@@ -1,5 +1,6 @@
 import React from 'react';
 import CarouselItem from './CarouselItem.jsx';
+import SortForm from './SortForm.jsx';
 import {similarItemsRequest} from '../apiRequest.js';
 
 
@@ -23,6 +24,7 @@ class App extends React.Component {
 
   onSort (event) {
     event.preventDefault();
+    //apiRequest
     let col = this.state.sortParam;
     let value = this.state.mainProductInfo[col];
     similarItemsRequest(col, value)
@@ -39,22 +41,10 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <div>
-          <form
-            onChange={this.onSortParamChange}
-            onSubmit={(event)=>{this.onSort(event)}}
-            value={this.state.sortParam}>
-              <label>Sort Products By: </label>
-            <select>
-              <option value='category'>Category</option>
-              <option value='isSale'>On Sale</option>
-              <option value='shortDescription'>By Color</option>
-              <option value='liked'>Products I Liked</option>
-              <option value='averageRating'>Average Rating</option>
-            </select>
-            <button type="submit">Sort</button>
-          </form>
-        </div>
+        <SortForm
+          sortParam={this.state.sortParam}
+          onSortParamChange={this.onSortParamChange}
+          onSort={this.onSort} />
         <div className="carousel">
         <CarouselItem />
         </div>
