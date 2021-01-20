@@ -1,11 +1,11 @@
 import React from 'react';
-import CarouselItem from './CarouselItem.jsx';
+import Carousel from './Carousel.jsx';
 import SortForm from './SortForm.jsx';
 import {similarItemsRequest} from '../apiRequest.js';
 import styled from 'styled-components';
 
-const Carousel = styled.div`
-  background-color: lightgreen;
+const CarouselStyle = styled.div`
+  background-color: white;
   display: flex;
   align-items: flex-end;
   overflow: scroll;
@@ -52,9 +52,9 @@ class App extends React.Component {
           sortParam={this.state.sortParam}
           onSortParamChange={this.onSortParamChange}
           onSort={this.onSort} /><br></br>
-        <Carousel>
-          <CarouselItem similarItems={this.state.similarItems} />
-        </Carousel>
+        <CarouselStyle>
+          <Carousel similarItems={this.state.similarItems} />
+        </CarouselStyle>
       </div>
     );
   }

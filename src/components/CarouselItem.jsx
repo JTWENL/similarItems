@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const CarouselProduct = styled.div`
-  border: 5px solid yellow;
   width: 217.33px;
+  margin: 5px;
 `
 
 const Image = styled.img`
@@ -12,32 +12,29 @@ const Image = styled.img`
 `
 
 let CarouselItem = (props) => {
-  let image = 'main';
+  let itemObj = props.itemObj;
+  const [image, setImage] = useState('main');
+  let fresh = itemObj.isFresh ? 'NEW' : '';
+  let sale = itemObj.isSale ? 'ON SALE' : '';
+  let liked = itemObj.liked ? 'LIKED' : '';
+
   return (
-    <>
-      {props.similarItems.map((item,i) => {
-        let fresh = item.isFresh ? 'NEW' : '';
-        let sale = item.isSale ? 'ON SALE' : '';
-        let liked = item.liked ? 'LIKED' : '';
-        return (
-        <CarouselProduct
-          onMouseEnter={()=>{
-            image = 'hover'
-            console.log('image: ', image)
-          }}
-          key={i}
-          className="carousel-item">
-          <p>{liked}</p>
-          <Image src={item.carouselImages[image]}></Image>
-          <p>{fresh}</p>
-          <p>{sale}</p>
-          <p><b>{item.name}</b></p>
-          <p>Color: {item.shortDescription}</p>
-          <p><b>${item.price}</b></p>
-          <p>AverageRating: {item.averageRating}</p>
-        </CarouselProduct>);
-      })}
-    </>
+    <CarouselProduct
+      className="carousel-item">
+      <p>{liked}</p>
+      <Image
+        onMouseEnter={()=> setImage('hover')}
+        OnMouseLeave={()=> setImage('main')}
+        src={itemObj.carouselImages[image]}></Image>
+      <p>
+        {fresh}<br></br>
+        {sale}<br></br>
+        <b>{itemObj.name}</b><br></br>
+        Color: {itemObj.shortDescription}<br></br>
+        <b>${itemObj.price}</b><br></br>
+        AverageRating: {itemObj.averageRating}<br></br>
+      </p>
+    </CarouselProduct>
   )
 }
 
