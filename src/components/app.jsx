@@ -1,14 +1,21 @@
 import React from 'react';
 import Carousel from './Carousel.jsx';
 import SortForm from './SortForm.jsx';
-import {similarItemsRequest} from '../apiRequest.js';
+import {similarItemsRequest, sampleData} from '../apiRequest.js';
 import styled from 'styled-components';
 
-const CarouselStyle = styled.div`
+const BodyContainer = styled.div`
+  font-family: 'Roboto', sans-serif;
+`
+const CarouselDiv= styled.div`
   background-color: white;
   display: flex;
   align-items: flex-end;
   overflow: scroll;
+  width: 650px;
+  height: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 `
 
 class App extends React.Component {
@@ -17,11 +24,23 @@ class App extends React.Component {
 
     this.state = {
       sortParam: 'category',
-      mainProductInfo: {'category': 'Tools'},
+      mainProductInfo: sampleData,
       similarItems: []
     }
     this.onSortParamChange = this.onSortParamChange.bind(this);
     this.onSort = this.onSort.bind(this);
+  }
+
+  componentDidMount () {
+    let col = this.state.sortParam;
+    let value = this.state.mainProductInfo[col];
+    similarItemsRequest(col, value)
+      .then((data) => {
+        this.setState({
+          similarItems: data
+        })
+      })
+      .catch(err => {alert(err)})
   }
 
   onSortParamChange (event) {
@@ -47,15 +66,13 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
+      <BodyContainer>
         <SortForm
           sortParam={this.state.sortParam}
           onSortParamChange={this.onSortParamChange}
           onSort={this.onSort} /><br></br>
-        <CarouselStyle>
           <Carousel similarItems={this.state.similarItems} />
-        </CarouselStyle>
-      </div>
+      </BodyContainer>
     );
   }
 }

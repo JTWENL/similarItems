@@ -8,7 +8,7 @@ let SortForm = (props) => {
       onChange={props.onSortParamChange}
       onSubmit={(event)=>{props.onSort(event)}}
       value={props.sortParam}>
-        <label>Sort Products By: </label>
+        <label>Similar Products By: </label>
       <select>
         <option value='category'>Category</option>
         <option value='isSale'>On Sale</option>
