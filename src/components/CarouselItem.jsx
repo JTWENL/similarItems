@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import {emptyHeart, fullHeart} from '../svg.jsx';
 import StarRatingComponent from 'react-star-rating-component';
+
 
 const CarouselProduct = styled.div`
   width: 217.33px;
@@ -23,8 +25,11 @@ const Info = styled.p`
   min-height: 120px;
   max-height: 120px;
 `
-const LikedButton = styled.a`
-  color: red
+const LikedButton = styled.button`
+  margin-left: 180px;
+  border: none;
+  background: none;
+  outline: none;
 `
 const OnSalePrice = styled.span`
   padding: 4px 2px 2px 0px;
@@ -47,7 +52,7 @@ let CarouselItem = (props) => {
   let sale = itemObj.isSale
               ? <OnSalePrice><b><sup>$</sup><SalePrice>{itemObj.price}</SalePrice><sup>.00</sup></b></OnSalePrice>
               : <b><sup>$</sup><SalePrice>{itemObj.price}</SalePrice><sup>.00</sup></b>
-  let liked = isLiked ? 'LIKED' : 'LIKE';
+  let liked = isLiked ? fullHeart : emptyHeart;
   let variants = itemObj.variants ? 'More options' : ' ';
 
   return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import CarouselItem from './CarouselItem.jsx';
 import styled from 'styled-components';
-import {fullStarSvg, emptyStarSvg} from '../svg.jsx';
 
 let NavLeftButton = styled.button`
   background-color: lightgrey;
