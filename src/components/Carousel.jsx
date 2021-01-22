@@ -44,11 +44,19 @@ class Carousel extends React.Component {
   }
 
   handleScrollClick (event, direction) {
-    let parent = (event.target.parentElement.parentElement)
-    console.log(parent);
+    let clickedElement = event.target.nodeName;
+    let parent;
+
+    if (clickedElement === 'BUTTON') {
+      parent=event.target.parentElement
+    } else if (clickedElement ==='svg'){
+      parent = event.target.parentElement.parentElement
+    } else {
+      parent = event.target.parentElement.parentElement.parentElement;
+    }
+
     let carousel = parent.childNodes[1];
-    console.log(carousel);
-    let incrementer = 217.33*(4);
+    let incrementer = 869.32*(4);
     if (direction === 'left') {
       incrementer = incrementer*-1;
     }
