@@ -7,6 +7,7 @@ import StarRatingComponent from 'react-star-rating-component';
 const CarouselProduct = styled.div`
   width: 217.33px;
   margin: 5px;
+  height: 420px;
   font-size: 14px;
 `
 const Image = styled.img`
@@ -21,7 +22,7 @@ const Fresh = styled.span`
 const ItemDesc = styled.span`
   color: grey;
 `
-const Info = styled.p`
+const Info = styled.div`
   min-height: 120px;
   max-height: 120px;
 `

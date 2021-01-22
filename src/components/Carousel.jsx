@@ -1,5 +1,6 @@
 import React from 'react';
 import CarouselItem from './CarouselItem.jsx';
+import {arrowRight, arrowLeft} from '../svg.jsx';
 import styled from 'styled-components';
 
 let NavLeftButton = styled.button`
@@ -7,22 +8,29 @@ let NavLeftButton = styled.button`
   align-self: center;
   position: sticky;
 `
-let NavRightButton = styled.button`
-  background-color: lightgrey;
+let NavButton = styled.button`
+  background-color: white;
+  width: 55px;
+  height: 420px;
   align-self: center;
-  position: sticky
-  right: 0;
+  position: sticky;
+  border: none;
+  outline: none;
 `
 
 const CarouselDiv= styled.div`
   background-color: white;
+  background: none;
   display: flex;
   align-items: flex-end;
   overflow: scroll;
-  width: 650px;
   height: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 0px 15px 0px 15px;
+`
+const CarouselGrid = styled.div`
+  display: flex;
+  width: auto;
+  justify-content: start;
 `
 
 class Carousel extends React.Component {
@@ -30,27 +38,39 @@ class Carousel extends React.Component {
     super(props)
 
     this.state = {
-      placeholder: true
+      scrollPosition: 0
     }
     this.handleScrollClick = this.handleScrollClick.bind(this);
   }
 
-  handleScrollClick (event) {
-    console.log(event.target.parentElement)
-    CarouselDiv.scrollTo(100,0)
+  handleScrollClick (event, direction) {
+    let parent = (event.target.parentElement.parentElement)
+    console.log(parent);
+    let carousel = parent.childNodes[1];
+    console.log(carousel);
+    let incrementer = 217.33*(4);
+    if (direction === 'left') {
+      incrementer = incrementer*-1;
+    }
+    let scrollPosition = carousel.scrollLeft
+    carousel.scrollTo({
+      top: 0,
+      left: (scrollPosition + incrementer),
+      behavior: 'smooth'
+      });
   }
 
 
   render() {
     return (
-      <>
-        <NavRightButton onClick={(event) => {this.handleScrollClick(event)}}>scroll left</NavRightButton>
+      <CarouselGrid>
+        <NavButton onClick={(event) => {this.handleScrollClick(event, 'left')}}>{arrowLeft}</NavButton>
         <CarouselDiv>
             {this.props.similarItems.map((item,i) => {
               return <CarouselItem key={i} itemObj={item}/>})}
         </CarouselDiv>
-        <NavRightButton>scroll right</NavRightButton>
-      </>
+        <NavButton onClick={(event) => {this.handleScrollClick(event, 'right')}}>{arrowRight}</NavButton>
+      </CarouselGrid>
     )
   }
 }

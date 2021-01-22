@@ -7,16 +7,6 @@ import styled from 'styled-components';
 const BodyContainer = styled.div`
   font-family: 'Roboto', sans-serif;
 `
-const CarouselDiv= styled.div`
-  background-color: white;
-  display: flex;
-  align-items: flex-end;
-  overflow: scroll;
-  width: 650px;
-  height: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-`
 
 class App extends React.Component {
   constructor(props){
@@ -70,8 +60,8 @@ class App extends React.Component {
         <SortForm
           sortParam={this.state.sortParam}
           onSortParamChange={this.onSortParamChange}
-          onSort={this.onSort} /><br></br>
-          <Carousel similarItems={this.state.similarItems} />
+          onSort={this.onSort} /> <br></br>
+        <Carousel similarItems={this.state.similarItems} />
       </BodyContainer>
     );
   }
