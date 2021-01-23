@@ -56,7 +56,7 @@ class Carousel extends React.Component {
     }
 
     let carousel = parent.childNodes[1];
-    let incrementer = 869.32*(4);
+    let incrementer = 869.32;
     if (direction === 'left') {
       incrementer = incrementer*-1;
     }

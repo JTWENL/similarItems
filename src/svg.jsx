@@ -16,8 +16,8 @@ let arrowLeft = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill
 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clipRule="evenodd" />
 </svg>
 
-let cartSvg = <svg xmlns="http://www.w3.org/2000/svg" fill="blue" viewBox="0 0 24 24" stroke="currentColor" height="25px" width="25px">
+let cartSvg = <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke="currentColor" height="25px" width="25px">
 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
 </svg>
 
-export {emptyHeart, fullHeart, arrowRight, arrowLeft};
+export {emptyHeart, fullHeart, arrowRight, arrowLeft, cartSvg};
