@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {emptyHeart, fullHeart, cartSvg} from '../svg.jsx';
 import StarRatingComponent from 'react-star-rating-component';
+import StarsItem from './StarsItem.jsx';
 
 
 const CarouselProduct = styled.div`
@@ -77,13 +78,14 @@ let CarouselItem = (props) => {
         <ItemDesc>Color: {itemObj.shortDescription}</ItemDesc><br></br>
         {sale}<br></br>
         <div>
-          <StarRatingComponent
+          {/* <StarRatingComponent
             name="stars"
             value={itemObj.averageRating}
             starColor="black"
             emptyStarColor="white"
             editing={false}>
-            </StarRatingComponent>
+            </StarRatingComponent> */}
+            <StarsItem stars={itemObj.averageRating} />
             <ItemDesc>({itemObj.reviews})</ItemDesc>
         </div>
         <div>{AddCart}</div>
