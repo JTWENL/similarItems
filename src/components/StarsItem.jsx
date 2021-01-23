@@ -1,5 +1,4 @@
 import React from 'react';
-import {fullStar, emptyStar} from '../svg.jsx';
 
 let StarsItem = (props) => {
   let mapArr = [1,2,3,4,5];

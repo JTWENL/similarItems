@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {emptyHeart, fullHeart, cartSvg} from '../svg.jsx';
-import StarRatingComponent from 'react-star-rating-component';
 import StarsItem from './StarsItem.jsx';
 
 
 const CarouselProduct = styled.div`
-  width: 217.33px;
+  width: 13.58em;
   margin: 5px;
-  height: 420px;
-  font-size: 14px;
+  height: 26.25em;
+  font-size: 0.875em;
 `
 const Image = styled.img`
-  height: 217.33px;
-  width: 217.33px;
+  height: 13.58em;
+  width: 13.58em;
 `
 const Fresh = styled.div`
   color: red;
@@ -24,30 +23,30 @@ const ItemDesc = styled.span`
   color: grey;
 `
 const Info = styled.div`
-  min-height: 120px;
-  max-height: 120px;
+  min-height: 7.5em;
+  max-height: 7.5em;
   display: grid;
-  grid-tempalate-rows: auto auto auto auto 35px auto;
+  grid-tempalate-rows: repeat(6, auto);
   grid-template-columns: 75% 25%;
   justify-items: start;
 `
 const LikedButton = styled.button`
-  margin-left: 180px;
-  height: 25px;
+  margin-left: 11.25em;
+  height: 2em;
   border: none;
   background: none;
   outline: none;
 `
 const OnSalePrice = styled.span`
   background-color: #ffdb00;
-  box-shadow: 3px 2px red;
+  box-shadow: 0.2em 0.125em red;
   width: 40%;
 `
 const SalePrice = styled.span`
-  font-size: 24px;
+  font-size: 1.5em;
 `
-const AddToCart = styled.span`
-  align-self: center;
+const Rating = styled.span`
+  margin-top: 0.5em;
 `
 
 let CarouselItem = (props) => {
@@ -63,7 +62,7 @@ let CarouselItem = (props) => {
   let liked = isLiked ? fullHeart : emptyHeart;
   let showLiked = hover ? <LikedButton onClick={()=>{setLike(!isLiked)}}>{liked}</LikedButton> : <LikedButton></LikedButton>;
   let variants = itemObj.variants ? 'More options' : ' ';
-  let AddCart = hover ? <AddToCart>{cartSvg}</AddToCart> : null;
+  let AddCart = hover ? <span>{cartSvg}</span> : <span></span>;
 
   return (
     <CarouselProduct
@@ -77,18 +76,11 @@ let CarouselItem = (props) => {
         <b>{itemObj.name}</b><br></br>
         <ItemDesc>Color: {itemObj.shortDescription}</ItemDesc><br></br>
         {sale}<br></br>
-        <div>
-          {/* <StarRatingComponent
-            name="stars"
-            value={itemObj.averageRating}
-            starColor="black"
-            emptyStarColor="white"
-            editing={false}>
-            </StarRatingComponent> */}
-            <StarsItem stars={itemObj.averageRating} />
-            <ItemDesc>({itemObj.reviews})</ItemDesc>
-        </div>
-        <div>{AddCart}</div>
+        <Rating>
+          <StarsItem stars={itemObj.averageRating} />
+          <ItemDesc>({itemObj.reviews})</ItemDesc>
+        </Rating>
+        {AddCart}
         <ItemDesc>{variants}</ItemDesc>
       </Info>
     </CarouselProduct>

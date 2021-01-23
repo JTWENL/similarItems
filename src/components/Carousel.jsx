@@ -10,8 +10,8 @@ let NavLeftButton = styled.button`
 `
 let NavButton = styled.button`
   background-color: white;
-  width: 55px;
-  height: 420px;
+  width: 3.44em;
+  height: 26.25em;
   align-self: center;
   position: sticky;
   border: none;
@@ -24,7 +24,7 @@ const CarouselDiv= styled.div`
   align-items: flex-end;
   overflow: scroll;
   height: auto;
-  padding-left: 0px 15px 0px 15px;
+  padding-left: 0em 1em 0em 1em;
 `
 const CarouselGrid = styled.div`
   display: flex;
