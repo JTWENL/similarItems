@@ -17,7 +17,6 @@ let NavButton = styled.button`
   border: none;
   outline: none;
 `
-
 const CarouselDiv= styled.div`
   background-color: white;
   background: none;

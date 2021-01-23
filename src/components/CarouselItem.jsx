@@ -26,7 +26,7 @@ const Info = styled.div`
   min-height: 120px;
   max-height: 120px;
   display: grid;
-  grid-tempalate-rows: auto auto auto auto 30px auto;
+  grid-tempalate-rows: auto auto auto auto 35px auto;
   grid-template-columns: 75% 25%;
   justify-items: start;
 `
@@ -38,7 +38,6 @@ const LikedButton = styled.button`
   outline: none;
 `
 const OnSalePrice = styled.span`
-
   background-color: #ffdb00;
   box-shadow: 3px 2px red;
   width: 40%;
