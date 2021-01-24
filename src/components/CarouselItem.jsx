@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {emptyHeart, fullHeart, cartSvg} from '../svg.jsx';
 import StarsItem from './StarsItem.jsx';
 
@@ -14,14 +14,13 @@ const Image = styled.img`
   height: 13.58em;
   width: 13.58em;
 `
-const Fresh = styled.div`
-  color: red;
-  size: large;
-  font-weight: 900;
-`
 const ItemDesc = styled.span`
   color: grey;
 `
+const Variants = styled.span`
+  color : ${props => props.variants ? 'grey' : 'white'}
+`
+
 const Info = styled.div`
   min-height: 7.5em;
   max-height: 7.5em;
@@ -36,52 +35,57 @@ const LikedButton = styled.button`
   border: none;
   background: none;
   outline: none;
+  visibility: ${props => props.hover ? 'visible' : 'hidden'}
 `
-const OnSalePrice = styled.span`
-  background-color: #ffdb00;
-  box-shadow: 0.2em 0.125em red;
-  width: 40%;
+const Cart = styled.div`
+  visibility: ${props => props.hover ? 'visible' : 'hidden'}
 `
-const SalePrice = styled.span`
-  font-size: 1.5em;
+
+const SalePrice = styled.div`
+  ${(props) =>
+    props.isSale && css`
+      background-color: #ffdb00;
+      padding-right: 0.2em;
+      box-shadow: 0.2em 0.125em red;
+      width: 40%;
+    `};
 `
-const Rating = styled.span`
+const Rating = styled.div`
   margin-top: 0.5em;
+`
+const Fresh = styled.div`
+color: ${props => props.isFresh ? 'red' : 'white'};
+size: large;
+font-weight: bold;
 `
 
 let CarouselItem = (props) => {
   const [hover, setHover] = useState(false);
   const[isLiked, setLike] = useState(props.itemObj.liked);
-
   let itemObj = props.itemObj;
+
   let showImage = hover ? 'hover' : 'main';
-  let fresh = itemObj.isFresh ? 'NEW' : <div>{" "}</div>;
-  let sale = itemObj.isSale
-              ? <OnSalePrice><b><sup>$</sup><SalePrice>{itemObj.price}</SalePrice><sup>.00</sup></b></OnSalePrice>
-              : <b><sup>$</sup><SalePrice>{itemObj.price}</SalePrice><sup>.00</sup></b>
   let liked = isLiked ? fullHeart : emptyHeart;
-  let showLiked = hover ? <LikedButton onClick={()=>{setLike(!isLiked)}}>{liked}</LikedButton> : <LikedButton></LikedButton>;
-  let variants = itemObj.variants ? 'More options' : ' ';
-  let AddCart = hover ? <span>{cartSvg}</span> : <span></span>;
+  // let AddCart = hover ? <span>{cartSvg}</span> : <span></span>;
 
   return (
     <CarouselProduct
       onMouseEnter={()=> setHover(true)}
       onMouseLeave={()=> {setHover(false)}}>
-      {showLiked}
+      <LikedButton hover={hover} onClick={()=>{setLike(!isLiked)}}>{liked}</LikedButton>
       <Image
         src={itemObj.carouselImages[showImage]}></Image>
       <Info>
-        <Fresh><b>{fresh}</b></Fresh><br></br>
+        <Fresh isFresh={itemObj.isFresh}>NEW</Fresh><br></br>
         <b>{itemObj.name}</b><br></br>
         <ItemDesc>Color: {itemObj.shortDescription}</ItemDesc><br></br>
-        {sale}<br></br>
+        <SalePrice isSale={itemObj.isSale}><sup>$</sup><span style={{fontSize: "1.5em"}}>{itemObj.price}</span><sup>.00</sup></SalePrice><br></br>
         <Rating>
           <StarsItem stars={itemObj.averageRating} />
           <ItemDesc>({itemObj.reviews})</ItemDesc>
         </Rating>
-        {AddCart}
-        <ItemDesc>{variants}</ItemDesc>
+        <Cart hover={hover}>{cartSvg}</Cart>
+        <Variants variants={itemObj.variants}>More Options</Variants>
       </Info>
     </CarouselProduct>
   )
