@@ -50,6 +50,9 @@ const SalePrice = styled.div`
       width: 40%;
     `};
 `
+const PriceMain = styled.span`
+    font-size: 1.5em;
+`
 const Rating = styled.div`
   margin-top: 0.5em;
 `
@@ -63,10 +66,8 @@ let CarouselItem = (props) => {
   const [hover, setHover] = useState(false);
   const[isLiked, setLike] = useState(props.itemObj.liked);
   let itemObj = props.itemObj;
-
   let showImage = hover ? 'hover' : 'main';
   let liked = isLiked ? fullHeart : emptyHeart;
-  // let AddCart = hover ? <span>{cartSvg}</span> : <span></span>;
 
   return (
     <CarouselProduct
@@ -79,7 +80,7 @@ let CarouselItem = (props) => {
         <Fresh isFresh={itemObj.isFresh}>NEW</Fresh><br></br>
         <b>{itemObj.name}</b><br></br>
         <ItemDesc>Color: {itemObj.shortDescription}</ItemDesc><br></br>
-        <SalePrice isSale={itemObj.isSale}><sup>$</sup><span style={{fontSize: "1.5em"}}>{itemObj.price}</span><sup>.00</sup></SalePrice><br></br>
+        <SalePrice isSale={itemObj.isSale}><sup>$</sup><PriceMain>{itemObj.price}</PriceMain><sup>.00</sup></SalePrice><br></br>
         <Rating>
           <StarsItem stars={itemObj.averageRating} />
           <ItemDesc>({itemObj.reviews})</ItemDesc>
