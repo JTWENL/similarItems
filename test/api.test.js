@@ -1,5 +1,5 @@
 const axios = require('axios');
-import {sampleDataCategory, sampleDataSale} from './SampleAPIData.js';
+import {sampleDataCategory, sampleDataSale} from './sampleAPIData.js';
 
 let apiRequest = (col, value) => {
   return axios.get(`http://localhost:8080/similar/${col}/${value}`)
