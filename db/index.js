@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 const PORT = process.env.PORT || 8080;
 
-mongoose.connect(`mongodb://3.21.220.231:27017/jtwenl`, {useNewUrlParser: true});
+mongoose.connect(`mongodb://ec2-3-21-220-231.us-east-2.compute.amazonaws.com:27017/jtwenl`, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', ()=> {
