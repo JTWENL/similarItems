@@ -1,0 +1,6 @@
+[submodule "reviews-service"]
+	path = reviews-service
+	url = https://github.com/JTWENL/reviews-service.git
+[submodule "MainDescriptionService"]
+	path = MainDescriptionService
+	url = https://github.com/JTWENL/MainDescriptionService.git

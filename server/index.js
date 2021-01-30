@@ -19,8 +19,6 @@ app.listen(PORT, ()=> {
  * @returns {[Object]} - returns an array of documents who are similar based on the given req params
  *
 */
-
-
 app.get('/similar/:col/:value', (req, res) => {
   let col = req.params.col;
   let value = req.params.value;
