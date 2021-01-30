@@ -5,6 +5,15 @@ const Form = styled.div`
   margin: 25px 0px 0px 25px;
 `
 
+const Title = styled.div`
+  display: block;
+  font-size: 1.375rem;
+  line-height: 1.4545454545;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  color: black;
+`
+
 let SortForm = (props) => {
   return(
     <Form>
@@ -12,8 +21,10 @@ let SortForm = (props) => {
         onChange={props.onSortParamChange}
         onSubmit={(event)=>{props.onSort(event)}}
         value={props.sortParam}>
-          <label>Similar
-            Products By: </label>
+          <Title>
+            <label>Similar Products</label>
+          </Title>
+          <label>By: </label>
         <select>
           <option value='category'>Category</option>
           <option value='isSale'>On Sale</option>
