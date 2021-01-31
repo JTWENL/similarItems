@@ -1,4 +1,5 @@
 const path = require('path');
+var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: {
@@ -18,5 +19,8 @@ module.exports = {
       },
     ],
   },
-  externals:{ 'react': 'React', 'react-dom': 'ReactDOM' }
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  }
 };
